@@ -1,0 +1,12 @@
+{
+  "name": "pcremotecommander",
+  "version": "0.7.0-beta.5",
+  "description": "PC Remote Commander Windows staging launcher; downloads a pinned full-control runtime",
+  "license": "UNLICENSED",
+  "bin": {"pcremotecommander": "bin/pcremotecommander.cjs"},
+  "os": ["win32"],
+  "engines": {"node": ">=20"},
+  "publishConfig": {"access": "public", "tag": "beta"},
+  "files": ["bin"]
+}
+
