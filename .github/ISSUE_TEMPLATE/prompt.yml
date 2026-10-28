@@ -1,0 +1,39 @@
+name: Suggest a prompt
+description: Share an original PC Remote Commander task idea for review
+title: "Prompt idea: "
+labels: [prompt-idea]
+body:
+  - type: markdown
+    attributes:
+      value: "Share only your own prompt. Do not include passwords, tokens, private paths, or personal data. Suggestions are reviewed before appearing on the website."
+  - type: input
+    id: task
+    attributes:
+      label: What task does this help with?
+      placeholder: e.g. review a proposed file change
+    validations:
+      required: true
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Your prompt
+      description: Write the words someone could use with their own computer.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Files
+        - Terminal
+        - Browser
+        - Desktop
+        - Connection and setup
+    validations:
+      required: true
+  - type: textarea
+    id: note
+    attributes:
+      label: Permissions or approval to mention
+      description: Optional. Tell us what the user should review before this task runs.
