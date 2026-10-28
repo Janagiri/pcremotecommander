@@ -31,7 +31,7 @@ https://pc-remote-commander-staging.pcremotecommander.workers.dev/mcp
 
 Add it as a remote Streamable HTTP MCP server with OAuth in an eligible ChatGPT workspace, Claude, or Cursor. Complete consent in the same browser profile as your device dashboard. Start with a status tool; control tools also require the corresponding local device permissions and OAuth control scope.
 
-See [client-specific steps](docs/install.md). ChatGPT custom MCP availability depends on plan and workspace permissions. This repository is **public documentation**, not the private gateway or agent source; it contains no credentials, user data, or production configuration.
+See [client-specific steps](docs/install.md). ChatGPT custom MCP availability depends on plan and workspace permissions. This repository contains public setup guides and the small [npm beta launcher source](launcher/bin/pcremotecommander.cjs). The device runtime and hosted gateway source are not published here. No credentials, user data, or production configuration are included.
 
 ## Plans
 
