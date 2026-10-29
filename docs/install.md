@@ -1,46 +1,78 @@
-# Install and connect
+# Install the beta and connect an assistant
 
-## 1. Start the Windows agent
+## 1. Connect your Windows computer
 
-Install [Node.js](https://nodejs.org/) so `npx` is available. In PowerShell, Command Prompt, or Windows Terminal on the computer you own or administer, run:
+Use Windows 10/11 with [Node.js 20+ and npm](https://nodejs.org/en/download). Run as a normal user:
 
-```text
+```powershell
 npx --yes pcremotecommander@beta setup
 ```
 
-The npm launcher downloads the beta runtime, verifies its pinned archive hash, and starts interactive setup. Follow the terminal prompts. Choose read-only access or the specific control capabilities you need: files, commands, browser, and desktop. Do not approve capabilities you do not intend to use.
+The launcher downloads a versioned runtime, checks its pinned SHA-256 and installs bundled Python in your user profile. Node.js is not installed automatically yet. Allow time for the first download; later launches reuse the installation.
 
-## 2. Pair in your PUBLIC browser
+Open the approval link in your **PUBLIC browser**, sign in with your own GitHub account, compare both codes and review the permissions. Standard setup requests file, command, browser and desktop control. Approve only a request you started. Keep **Use this computer for AI tools** checked to select it automatically. The dashboard should show **Online**, **Control approved** and **Selected for AI tools**.
 
-Open the pairing URL printed by the terminal in the browser profile where you sign in to the [public dashboard](https://pc-remote-commander-staging.pcremotecommander.workers.dev/devices). Sign in with your **own** GitHub account. Enter the code shown in the terminal and confirm the requested permissions. On Devices, select **Use this computer**. The device must show Online and Selected for AI tools.
+Keep the terminal open. Ctrl+C disconnects. A valid saved pairing reconnects when you run the same command. Revoked credentials trigger a fresh approval. Previously read-only devices cannot gain control without fresh consent; if needed, revoke that device on Devices and rerun the same command. The next beta automates this upgrade request as well.
 
-The [operator dashboard](https://pc-remote-commander-ops-staging.pcremotecommander.workers.dev/admin) is private; public users do not sign in there.
-
-## 3. Add the remote MCP endpoint
+## 2. Use this remote MCP endpoint
 
 ```text
 https://pc-remote-commander-staging.pcremotecommander.workers.dev/mcp
 ```
 
-Use OAuth when the client asks for authentication. Sign in and approve consent in the same browser profile that owns the selected device. Read access uses `jan:read`; control tools also require `jan:control` and matching local permissions.
+Choose **OAuth**, not an owner's API key. Use the browser profile signed into the PCRC account that owns your device. Review `jan:read` and `jan:control`; OAuth cannot exceed the device permissions. Complete a fresh authorization attempt in one browser profile instead of reusing an old link.
 
-### ChatGPT
+## ChatGPT
 
-If your plan and workspace permit custom MCP servers, go to **Plugins → Add custom MCP server**, enter the endpoint above, select OAuth, review discovered tools, and create the connection. In a new chat, select the connection and ask it to check your computer's status. [Official ChatGPT guide](https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt). This beta is not listed in the public ChatGPT directory.
+1. On ChatGPT web, open **Plugins → Add → Create custom MCP server** (some workspaces show Apps or a plus button).
+2. Name it **PC Remote Commander**, enter the endpoint above and choose OAuth.
+3. Complete PCRC consent, review discovered tools and add the connection to a chat.
+4. Ask: “Use PCRC to check the connected computer and its capabilities.”
 
-### Claude
+Your plan and workspace must permit custom MCP connections; an administrator may need to enable them. PCRC is not in the public directory. See the [official OpenAI custom MCP guide](https://developers.openai.com/api/docs/guides/custom-mcp-server).
 
-In **Customize → Connectors**, add a custom remote connector with the endpoint above. Choose OAuth sign-in, connect, and enable the tools you need. Team/Enterprise owners may have to add the connector for their organization first. [Official Claude guide](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp). This beta is not listed in the Claude directory.
+## Claude web or Claude Desktop — remote connector
 
-### Cursor
+1. Open **Customize / Settings → Connectors** and choose **Add custom connector**.
+2. Enter **PC Remote Commander** and the HTTPS endpoint above.
+3. Connect with OAuth using your own PCRC account and enable the connector in a conversation.
+4. Ask it to inspect the selected computer's status before making changes.
 
-In Cursor's MCP settings, add a remote **Streamable HTTP** server with the endpoint above, then complete OAuth. The client supports remote HTTP and OAuth; [official Cursor MCP guide](https://docs.cursor.com/context/model-context-protocol).
+Managed workspaces may require an owner's setup. This is a remote connector, including when used in Claude Desktop. See the [official Claude guide](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
 
-## If a connection fails
+## Cursor — remote MCP
 
-- Confirm the Windows agent is running and the correct computer is Online and Selected in your **PUBLIC browser**.
-- If OAuth says the authorization expired, start a fresh connection from the AI client and finish it in one browser profile.
-- If a tool says permission denied, review the local capabilities approved at pairing and the OAuth scopes approved for that AI client.
-- To stop AI routing, select **Stop AI access**. To invalidate a computer's key, select **Revoke** and confirm the review page.
+Add this entry to your MCP configuration, preserving any existing servers:
 
-Never paste pairing codes, device keys, or OAuth tokens into public issues.
+```json
+{
+  "mcpServers": {
+    "pcrc": {
+      "url": "https://pc-remote-commander-staging.pcremotecommander.workers.dev/mcp"
+    }
+  }
+}
+```
+
+Use Cursor's MCP settings to connect and complete OAuth. Enable the server for Agent, then ask for the connected computer's status. See [Cursor's official MCP documentation](https://docs.cursor.com/context/model-context-protocol).
+
+## Local MCP and CLI
+
+For a desktop client launching a local process instead of the hosted endpoint, follow the separate [local stdio guide](https://pc-remote-commander-staging.pcremotecommander.workers.dev/mcp/local/). The basic Python stdio example has workspace-scoped tools; remote full control is configured through pairing and the task server. Do not assume both catalogs or permissions are identical.
+
+For local command-line help and skills:
+
+```powershell
+npx --yes pcremotecommander@beta cli --help
+npx --yes pcremotecommander@beta cli skills list
+npx --yes pcremotecommander@beta cli skills guide
+```
+
+The public npm beta supports Windows. A public Linux installer and clean Linux client test are pending.
+
+## First useful test
+
+Create a disposable folder in the approved workspace. Ask your assistant to inspect it, preview an edit to a test file, apply the approved change and read it back. For a command test, request a harmless `echo` command and approve only the exact action shown. Skills and client consent never replace PCRC's action checks.
+
+If a tool fails, check the agent is running, the correct device is selected, and both device permissions and client OAuth include control. Never post tokens, private files or pairing URLs in public issues. Actual ChatGPT/Claude/Cursor round trips on a second PC remain release acceptance checks; these instructions are not a claim they have all passed.
+
