@@ -71,7 +71,7 @@ Create a disposable folder in the approved workspace. Ask your assistant to insp
 If a tool fails, check the agent is running, the correct device is selected, and both device permissions and client OAuth include control. Never post tokens, private files or pairing URLs in public issues. Actual ChatGPT/Claude/Cursor round trips on a second PC remain release acceptance checks; these instructions are not a claim they have all passed.
 
 
-## One-command terminal status (beta.9 candidate; publication pending)
+## One-command terminal status (beta.9)
 
 For setup and later sessions, use the same setup command at the top of this guide. MCP, CLI and skills are installed together. A signed device connection verifies the paired account; the terminal shows its username and account ID, ONLINE and Ready. Browser sign-in cookies are not used as a replacement for the device key.
 
