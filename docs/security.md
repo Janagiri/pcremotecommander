@@ -1,14 +1,18 @@
-# Security and privacy
+# Security, privacy and beta terms
 
-PC Remote Commander is a remote computer control product. Pair only computers you own or administer and choose the minimum local capabilities needed for each device.
+Pair only computers you own or administer. New standard setup requests file, command, browser and desktop control, and enables it only after explicit browser approval. A saved read-only grant is never silently upgraded.
 
-- The public dashboard requires each user to sign in. Devices, sessions, and MCP routing are account-scoped.
-- Pairing requires a short-lived code from the agent's terminal and explicit confirmation in that user's browser.
-- AI clients use OAuth. Read and control scopes are separate; control also requires corresponding local capabilities.
-- Users can stop routing to a device or revoke its device key from the dashboard.
-- The public MCP endpoint uses HTTPS. This is transport encryption, **not** end-to-end encryption between an AI client and the computer; the gateway handles requests to authorize and route them.
-- The owner dashboard reports status and subscription information, without cross-account computer controls.
+- Sign in with your own GitHub account. Device selection and routing are account-scoped.
+- Compare the short-lived pairing code on both screens and approve only a connection you started. Device-key possession is also required.
+- MCP clients use OAuth; control requires `jan:control` and matching device capabilities. Sensitive commands and operations retain their action checks.
+- Full control uses your Windows account, not automatic administrator privileges. Commands may reach outside the workspace; screenshots may show private information.
+- Stop the agent with Ctrl+C. Stop AI access clears routing; Revoke invalidates the device key. Account deletion is available from Account & privacy, subject to the displayed subscription requirements.
+- HTTPS/WSS encrypt transport. The gateway can process requests for authorization and routing; this is not opaque end-to-end encryption. Your AI provider may receive tool results.
+- The owner console reports status and subscription metadata without cross-account control of users' computers.
 
-The public site is staging beta. Google/email auth, live subscriptions, a production installer, and public directory review remain in development. Do not treat a sandbox checkout as a live payment.
+Use disposable files during beta testing, keep backups and review actions. Do not use the service for unauthorized access or unlawful activity. No production availability guarantee is offered; staging billing uses sandbox payments.
 
-For a security concern, email [janagiri3297@gmail.com](mailto:janagiri3297@gmail.com). Do not post credentials, pairing codes, device keys, private file contents, or personal data in a public issue.
+Full policies: [Terms](https://pc-remote-commander-staging.pcremotecommander.workers.dev/terms/), [Privacy](https://pc-remote-commander-staging.pcremotecommander.workers.dev/privacy/), [Refunds](https://pc-remote-commander-staging.pcremotecommander.workers.dev/refunds/).
+
+Report concerns privately to [janagiri3297@gmail.com](mailto:janagiri3297@gmail.com). Do not send passwords, tokens, keys, private files or identity documents. This repository is a public documentation/launcher repository; it does not publish private service configuration or user records.
+
