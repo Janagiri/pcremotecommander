@@ -58,12 +58,9 @@ Follow the [ChatGPT, Claude Desktop/web and Cursor steps](docs/install.md). Use 
 
 ## CLI and workflow skills
 
-```powershell
-npx --yes pcremotecommander@beta cli skills list
-npx --yes pcremotecommander@beta cli skills route "Diagnose my computer connection"
-```
+The setup command installs MCP, CLI and workflow skills together. There is no separate installation command for each tool. Keep the setup terminal running and use the connected assistant for tasks.
 
-In a remote MCP conversation, ask the assistant to call `suggest_workflow`. Skills suggest a plan; they do not execute it or grant extra permissions. [Workflow guide](docs/skills.md).
+Ask your assistant to call `suggest_workflow` before troubleshooting or editing. Skills suggest a plan; they do not execute it or grant extra permissions. The CLI commands are optional action/reference commands, not additional setup steps. [Workflow and CLI reference](docs/skills.md).
 
 ## Beta terms at a glance
 
