@@ -12,7 +12,7 @@ The launcher downloads a versioned runtime, checks its pinned SHA-256 and instal
 
 Open the approval link in your **PUBLIC browser**, sign in with your own GitHub account, compare both codes and review the permissions. Standard setup requests file, command, browser and desktop control. Approve only a request you started. Keep **Use this computer for AI tools** checked to select it automatically. The dashboard should show **Online**, **Control approved** and **Selected for AI tools**.
 
-Keep the terminal open. Ctrl+C disconnects. A valid saved pairing reconnects when you run the same command. Revoked credentials trigger a fresh approval. Previously read-only devices cannot gain control without fresh consent; if needed, revoke that device on Devices and rerun the same command. The next beta automates this upgrade request as well.
+Keep the terminal open. Ctrl+C disconnects. A valid saved pairing reconnects when you run the same command. Revoked credentials trigger a fresh approval. Previously read-only devices cannot gain control without fresh consent; if needed, revoke that device on Devices and rerun the same command. Beta.8 and newer automatically request fresh full-control approval when the saved grant is limited.
 
 ## 2. Use this remote MCP endpoint
 
