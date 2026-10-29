@@ -12,7 +12,7 @@ The launcher downloads a versioned runtime, checks its pinned SHA-256 and instal
 
 Open the approval link in your **PUBLIC browser**, sign in with your own GitHub account, compare both codes and review the permissions. Standard setup requests file, command, browser and desktop control. Approve only a request you started. Keep **Use this computer for AI tools** checked to select it automatically. The dashboard should show **Online**, **Control approved** and **Selected for AI tools**.
 
-Keep the terminal open. Ctrl+C disconnects. A valid saved pairing reconnects when you run the same command. Revoked credentials trigger a fresh approval. Previously read-only devices cannot gain control without fresh consent; if needed, revoke that device on Devices and rerun the same command. Beta.8 and newer automatically request fresh full-control approval when the saved grant is limited.
+Keep the terminal open. Ctrl+C disconnects. A valid saved pairing reconnects when you run the same command. Revoked credentials trigger a fresh approval. Previously read-only devices cannot gain control without fresh consent; if needed, revoke that device on Devices and rerun the same command. Beta.8 and newer automatically request fresh full-control approval when the saved grant is limited. Beta.9 also detects a saved pairing for an older gateway and opens fresh approval on the current service; it replaces that saved identity only after approval.
 
 ## 2. Use this remote MCP endpoint
 
@@ -60,13 +60,7 @@ Use Cursor's MCP settings to connect and complete OAuth. Enable the server for A
 
 For a desktop client launching a local process instead of the hosted endpoint, follow the separate [local stdio guide](https://pc-remote-commander-staging.pcremotecommander.workers.dev/mcp/local/). The Windows local guide configures the task MCP server with explicit file, command, browser and desktop capabilities. Local stdio uses client action approvals rather than hosted gateway approval pages. The Linux source example is still workspace-scoped.
 
-For local command-line help and skills:
-
-```powershell
-npx --yes pcremotecommander@beta cli --help
-npx --yes pcremotecommander@beta cli skills list
-npx --yes pcremotecommander@beta cli skills guide
-```
+The same setup command includes the CLI and workflow skills. No per-tool installation is needed. See the optional [CLI/skills reference](skills.md) when you want to invoke a local action directly; those commands do not start the remote agent.
 
 The public npm beta supports Windows. A public Linux installer and clean Linux client test are pending.
 
@@ -75,4 +69,13 @@ The public npm beta supports Windows. A public Linux installer and clean Linux c
 Create a disposable folder in the approved workspace. Ask your assistant to inspect it, preview an edit to a test file, apply the approved change and read it back. For a command test, request a harmless `echo` command and approve only the exact action shown. Skills and client consent never replace PCRC's action checks.
 
 If a tool fails, check the agent is running, the correct device is selected, and both device permissions and client OAuth include control. Never post tokens, private files or pairing URLs in public issues. Actual ChatGPT/Claude/Cursor round trips on a second PC remain release acceptance checks; these instructions are not a claim they have all passed.
+
+
+## One-command terminal status (beta.9 candidate; publication pending)
+
+For setup and later sessions, use the same setup command at the top of this guide. MCP, CLI and skills are installed together. A signed device connection verifies the paired account; the terminal shows its username and account ID, ONLINE and Ready. Browser sign-in cookies are not used as a replacement for the device key.
+
+While connected, an interactive terminal shows numbered request/result previews. Recognized secret fields, authentication values and images are omitted; previews are bounded and may still contain private task content. They are displayed locally and are not written to a separate trace file. Keep screen sharing and terminal scrollback in mind.
+
+If connectivity fails, the terminal reports OFFLINE and retries with bounded backoff. Once the connection is restored it returns to ONLINE/Ready. It never replays a command with an uncertain result automatically. Revoked access, account closure and the session lease are handled separately. An older-gateway pairing opens fresh approval on the current service and is replaced only after approval.
 
