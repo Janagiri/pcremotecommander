@@ -58,7 +58,7 @@ Use Cursor's MCP settings to connect and complete OAuth. Enable the server for A
 
 ## Local MCP and CLI
 
-For a desktop client launching a local process instead of the hosted endpoint, follow the separate [local stdio guide](https://pc-remote-commander-staging.pcremotecommander.workers.dev/mcp/local/). The basic Python stdio example has workspace-scoped tools; remote full control is configured through pairing and the task server. Do not assume both catalogs or permissions are identical.
+For a desktop client launching a local process instead of the hosted endpoint, follow the separate [local stdio guide](https://pc-remote-commander-staging.pcremotecommander.workers.dev/mcp/local/). The Windows local guide configures the task MCP server with explicit file, command, browser and desktop capabilities. Local stdio uses client action approvals rather than hosted gateway approval pages. The Linux source example is still workspace-scoped.
 
 For local command-line help and skills:
 
