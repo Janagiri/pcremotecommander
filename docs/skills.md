@@ -2,7 +2,9 @@
 
 Skills help an assistant choose a workflow before using tools. They are advisory: routing does not run commands, edit files or authorize an action.
 
-## CLI
+## CLI reference — optional
+
+Setup already installs these features. The commands below perform individual local actions; they are not extra setup or connection steps. To start or reconnect the remote agent, use only `npx --yes pcremotecommander@beta setup`.
 
 ```powershell
 npx --yes pcremotecommander@beta cli skills list
