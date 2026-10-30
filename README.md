@@ -13,14 +13,14 @@ Choose PCRC when the missing piece is **access to the computer you need to work 
 - **Use the chat client you prefer.** Connect a compatible ChatGPT, Claude or Cursor client to your paired PC. Ask it to inspect a local test failure, update an approved document or work with a supported interface without manually transferring each result into chat.
 - **Choose the computer centrally.** Pair computers to your account, select which online device receives new requests, inspect usage and revoke its access from the dashboard. Keep the selected PC's agent running.
 - **Combine files, terminal and visual tasks.** For example, inspect a project configuration, run an approved check, then inspect its browser output. Capabilities and confirmations still apply to every operation.
-- **Coordinate multiple assistants explicitly.** Up to three task assignments can reserve separate file areas. Participating PCRC tools reject conflicting writes and stale hashes. This is not automatic model orchestration, and it cannot lock out unrelated programs or manual edits.
+- **Build with two or three AI assistants.** Let one assistant implement a feature, another write tests, and a third review the result. Connect each compatible client and divide work with PCRC task assignments. Up to three active assignments can reserve separate file areas; participating tools reject conflicting writes and stale hashes. You manage assignments and handoffs—PCRC does not automatically launch models, merge every change or lock out unrelated programs/manual edits.
 - **Recover supported file changes.** Reviewed text-edit/delete operations create recovery backups. Inspect a preview and current hash before changing important data; keep your own backups too.
 
 ### A practical comparison
 
 | Your situation | Best starting point | Reason |
 | --- | --- | --- |
-| You want a coding agent to build, debug or test a repository | Codex or Claude Code | They are coding agents that inspect code, edit files and run commands. If that already covers the task, adding PCRC may not help. |
+| You want to build, debug and test with your preferred AI | PCRC with a compatible assistant | Your assistant can inspect code, edit files and run commands on the paired PC. Split implementation, testing and review between two or three connected assistants using explicit task assignments. |
 | You want a preferred MCP chat client to act on an account-paired PC | PCRC remote MCP | PCRC supplies the computer-access layer, selected-device routing and revocation; your AI client supplies the reasoning. |
 | You know the exact local operation and want a command interface | PCRC CLI | Invoke a supported local operation or get workflow guidance without treating the CLI as an autonomous assistant. |
 | You use multiple assistants on the same workspace | PCRC task assignments | Explicit reservations and handoffs reduce collisions among cooperating tools; uncertain results require review rather than automatic replay. |
