@@ -8,6 +8,9 @@ Use Windows 10/11 with [Node.js 20+ and npm](https://nodejs.org/en/download). Ru
 npx --yes pcremotecommander@beta setup
 ```
 
+Prefer a double-click launcher? [Download the Windows folder](https://pc-remote-commander.pcremotecommander.workers.dev/install/PC-Remote-Commander-Windows.zip), choose **Extract All**, then open **Start-PCRC.cmd**. First use prepares missing Node.js and the bundled runtime. Keep the folder and double-click that same file for daily reconnects; keep its terminal open. This small launcher requires internet.
+
+
 The launcher downloads a versioned runtime, checks its pinned SHA-256 and installs bundled Python in your user profile. If Node.js/npx is missing, use the fallback installer below; it prepares verified portable Node.js and continues setup. Allow time for the first download; later launches reuse the installation.
 
 Open the approval link in your **PUBLIC browser**, sign in with your own GitHub account, compare both codes and review the permissions. Standard setup requests file, command, browser and desktop control. Approve only a request you started. Keep **Use this computer for AI tools** checked to select it automatically. The dashboard should show **Online**, **Control approved** and **Selected for AI tools**.
