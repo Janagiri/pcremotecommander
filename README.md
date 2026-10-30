@@ -35,7 +35,7 @@ Run in PowerShell, Command Prompt or Windows Terminal:
 npx --yes pcremotecommander@beta setup
 ```
 
-Prefer a double-click launcher? [Download the Windows folder](https://pc-remote-commander.pcremotecommander.workers.dev/install/PC-Remote-Commander-Windows.zip), choose **Extract All**, then open **Start-PCRC.cmd**. First use prepares missing Node.js and the bundled runtime. Keep the folder and double-click that same file for daily reconnects; keep its terminal open. This small launcher requires internet.
+Prefer a double-click launcher? [Download Start-PCRC.cmd](https://pc-remote-commander.pcremotecommander.workers.dev/install/Start-PCRC.cmd), save it to your desktop and double-click it. First use prepares missing Node.js and the bundled runtime. Use that same file for daily reconnects and keep its terminal open. This small launcher requires internet.
 
 
 If `npx` is missing or that command does not work, this fallback prepares verified portable Node.js and continues setup:
